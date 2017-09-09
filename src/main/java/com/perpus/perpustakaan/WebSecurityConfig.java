@@ -6,6 +6,7 @@
 package com.perpus.perpustakaan;
 
 import com.perpus.perpustakaan.services.AnggotaService;
+import com.perpus.perpustakaan.services.PetugasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,10 +24,12 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired AnggotaService anggotaService;
+    @Autowired PetugasService petugasService;
     
     @Autowired
     public void configAuth(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(anggotaService);
+        auth.userDetailsService(petugasService);
     }
     
     @Override
@@ -36,6 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/").permitAll()
                 .antMatchers(HttpMethod.POST, "/perpustakaan/anggota/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/perpustakaan/anggota/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/perpustakaan/petugas/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/perpustakaan/petugas/login").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and().httpBasic().and().csrf().disable();
     }
