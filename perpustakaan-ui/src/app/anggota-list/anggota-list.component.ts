@@ -12,12 +12,15 @@ export class AnggotaListComponent implements OnInit {
   listAnggota: Anggota[]=[];
   isError: boolean = false;
   error: string; 
-  constructor(private anggotaService: AnggotaService) {
+  a: string;
 
+  constructor(private anggotaService: AnggotaService) {
+    this.loadAnggotaData();
    }
 
    loadAnggotaData(){
-     this.anggotaService.findAllAnggota().subscribe(output =>{
+   
+    this.anggotaService.findAllAnggota().subscribe(output =>{
       console.log(output);
       this.listAnggota = output;
     })

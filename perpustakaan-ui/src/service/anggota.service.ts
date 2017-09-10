@@ -48,6 +48,44 @@ export class AnggotaService{
         return this.http.get(url, options).map(res => res.json()).catch(this.handleError);
     }
 
+    deleteAnggota(id: string){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
+        let options = new RequestOptions({headers: headers});
+        return this.http.delete(url + '/' + id, options).map(res => res.json()).catch(this.handleError);
+    }
+
+    newAnggota(anggota){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
+        let options = new RequestOptions({headers: headers});
+        return this
+            .http
+            .post(url, anggota, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    updateAnggota(anggota){
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
+        let options = new RequestOptions({headers: headers});
+        return this
+            .http
+            .put(url, anggota, options)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     handleError(error) {
         return Observable.throw(error.json() || 'Server error');
     }

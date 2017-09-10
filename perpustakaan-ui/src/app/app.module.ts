@@ -11,11 +11,13 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AnggotaListComponent } from './anggota-list/anggota-list.component';
+import { AnggotaInputComponent } from './anggota-input/anggota-input.component';
 
 export const AppRoutes : any =[
   { path: "", component: AppComponent },
   { path: "login", component: LoginComponent },
-  { path: "list-anggota", component: AnggotaListComponent},
+  { path: "list-anggota", component: AnggotaListComponent, canActivate: [AuthGuard]},
+  { path: "input-anggota", component: AnggotaInputComponent, canActivate: [AuthGuard]},
   { path: "**", redirectTo: '' }
 ];
 
@@ -23,7 +25,8 @@ export const AppRoutes : any =[
   declarations: [
     AppComponent,
     LoginComponent,
-    AnggotaListComponent
+    AnggotaListComponent,
+    AnggotaInputComponent
   ],
   imports: [
     HttpModule,
