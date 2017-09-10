@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"> Please Login</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="login.email" placeholder="E-Mail"/>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" [(ngModel)]="login.password" placeholder="Password"/>
+        </div>
+        <p><a (click)="onProcessLogin()" class="btn btn-primary">Login</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
