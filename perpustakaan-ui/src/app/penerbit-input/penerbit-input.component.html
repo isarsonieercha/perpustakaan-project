@@ -1,3 +1,15 @@
-<p>
-  penerbit-input works!
-</p>
+<h3 class="text-center">Penerbit Master</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table">
+        <tr>
+          <td><input class="form-control" type="text" [(ngModel)]="newPenerbit.name" placeholder="Penerbit namaPenerbit" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><a (click)="onPenerbitSave()" class="btn btn-success"><i class="fa fa-address-book-o" aria-hidden="true"></i> Add Data</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

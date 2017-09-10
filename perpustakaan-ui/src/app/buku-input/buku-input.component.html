@@ -1,3 +1,28 @@
-<p>
-  buku-input works!
-</p>
+<div class="container">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <label>Judul Buku:</label>
+      <input type="text" class="form-control" [(ngModel)]="newBuku.judulBuku">
+    </div>
+    <div class="form-group">
+      <label>Pengarang:</label>
+      <input type="text" class="form-control" [(ngModel)]="newBuku.pengarang">
+    </div>
+    <div class="form-group">
+      <label>Jumlah:</label>
+      <input type="text" class="form-control" [(ngModel)]="newBuku.jumlah">
+    </div>
+    <div class="form-group">
+      <label for="courseType">Penerbit</label>
+      <!-- <select class="form-control" [(ngModel)]="newBuku.penerbit" [compareWith]="compareFn" >
+           <option *ngFor="let dep of penerbit" [ngValue]="dep">{{ dep.name }}</option>
+      </select> -->
+      <select class="form-control" [(ngModel)]="newBuku.penerbit">
+        <option *ngFor="let dep of penerbit" [ngValue]="penerbit">{{ penerbit.namaPenerbit }}</option>
+   </select>
+    </div>
+    <p><a (click)="onInsertNewEmployee()" class="btn btn-success">Save Now</a></p>
+  </div>
+  <div class="col-lg-3"></div>
+</div>

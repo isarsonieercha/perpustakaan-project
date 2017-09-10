@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnggotaService } from '../service/anggota.service';
+import { BukuService } from '../service/buku.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { AnggotaService } from '../service/anggota.service';
 export class AppComponent {
   constructor (private router: Router,
   private AnggotaServiice: AnggotaService){
-    
+
   }
 
   onLogOut(){
