@@ -34,7 +34,7 @@ public class PetugasController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public Petugas loginPetugas(@RequestBody LoginObject login) throws Exception{
-        return petugasService.loginPetugas(login.getUsername(), login.getPassword());
+        return petugasService.loginPetugas(login.getEmail(), login.getPassword());
     }
 
     @RequestMapping(method = RequestMethod.GET)

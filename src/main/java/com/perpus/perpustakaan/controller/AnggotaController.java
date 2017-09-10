@@ -33,7 +33,7 @@ public class AnggotaController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/login")
     public Anggota login(@RequestBody LoginObject login) throws Exception{
-        return anggotaService.login(login.getUsername(), login.getPassword());
+        return anggotaService.login(login.getEmail(), login.getPassword());
     }
 
     @RequestMapping(method = RequestMethod.GET)
