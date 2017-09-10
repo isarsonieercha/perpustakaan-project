@@ -1,57 +1,77 @@
 import { Component, OnInit } from '@angular/core';
-import { Penerbit } from '../../interface/penerbit';
-import { PenerbitService } from '../../service/penerbit.service';
+import { Penerbit } from "../../interface/penerbit";
+import { PenerbitService } from "../../service/penerbit.service";
+
 
 @Component({
   selector: 'app-penerbit-list',
   templateUrl: './penerbit-list.component.html',
   styleUrls: ['./penerbit-list.component.css']
 })
-export class PenerbitListComponent implements OnInit {
-
-  penerbit:Penerbit[]=[];
-  newPenerbit:Penerbit = new Penerbit;
-  isError: boolean = false;
+export class PenerbitListComponent {
+  penerbits: Penerbit[] = [];
+  newPenerbit: Penerbit = new Penerbit();
   error: string;
+  isError: boolean = false;
   insertNew: boolean = false;
   isEdit: boolean = false;
 
-  constructor(private penerbitService:PenerbitService) {
+  constructor(private penerbitService: PenerbitService) {
     this.loadPenerbitData();
   }
 
-  loadPenerbitData(){
-    this.penerbitService.findAllPenerbit().subscribe(output =>{
+  loadPenerbitData() {
+    this.penerbitService.findAllPenerbit().subscribe(output => {
       console.log(output);
-      this.penerbit = output;
-      this.newPenerbit = new Penerbit();
-    })
+
+      this.penerbits = output;
+    }, error => {
+      this.isError = error;
+    });
   }
 
-  onPenerbitUpdate(){
-    this.penerbitService.updatePenerbit(this.newPenerbit).subscribe(update =>{
-      console.log(update);
+  onRemovePenerbit(id: string) {
+    console.log(id);
+    this.penerbitService.deletePenerbit(id).subscribe(data => {
+      if (data) {
+        this.loadPenerbitData();
+      }
+    }, error => {
+      this.isError = error;
+    });
+  }
+
+  onUpdatePenerbit() {
+    this.penerbitService.updatePenerbit(this.newPenerbit).subscribe(output => {
       this.loadPenerbitData();
       this.newPenerbit = new Penerbit();
-    }, error=>{
+      this.insertNew = false;
+    }, error => {
       this.isError = true;
       this.error = error;
       console.log(error);
-    })
+    });
   }
 
-  onRemoveDep(id : string){
-    console.log(id);
-    this.penerbitService.deletePenerbit(id).subscribe(data =>{
-      if(data){
-        this.loadPenerbitData();
-      } console.log(data);
-    })
+  onInsertNewPenerbit() {
+    if (!this.isEdit) {
+      this.penerbitService.saveNewPenerbit(this.newPenerbit).subscribe(output => {
+        this.penerbits.push(output);
+        this.newPenerbit = new Penerbit();
+        this.insertNew = false;
+      }, error => {
+        this.isError = true;
+        this.error = error;
+        console.log(error);
+      });
+    } else {
+      this.onUpdatePenerbit();
+    }
   }
 
   onEdit(penerbit){
-    this.isEdit = true;
-    this.newPenerbit = penerbit;
+    this.isEdit=true;
+    this.newPenerbit=penerbit;
+    this.insertNew=true;
   }
-
 }

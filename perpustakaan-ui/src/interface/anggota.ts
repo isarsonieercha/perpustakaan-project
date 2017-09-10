@@ -1,7 +1,7 @@
 export class Anggota{
     id: number;
     namaAnggota: string;
-    jenisKelamimn: string;
+    jenisKelamin: string;
     noTelp: string;
     alamat: string;
     email: string;

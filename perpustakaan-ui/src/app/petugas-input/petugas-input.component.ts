@@ -2,21 +2,21 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgProgressService } from "ngx-progressbar";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
-import { Penerbit } from "../../interface/penerbit";
-import { PenerbitService } from "../../service/penerbit.service";
+import { Petugas } from "../../interface/petugas";
+import { PetugasService } from "../../service/petugas.service";
 
 @Component({
-  selector: 'app-penerbit-input',
-  templateUrl: './penerbit-input.component.html',
-  styleUrls: ['./penerbit-input.component.css']
+  selector: 'app-petugas-input',
+  templateUrl: './petugas-input.component.html',
+  styleUrls: ['./petugas-input.component.css']
 })
-export class PenerbitInputComponent implements OnInit {
+export class PetugasInputComponent implements OnInit {
 
-  newPenerbit: Penerbit = new Penerbit();
+  newPetugas: Petugas = new Petugas();
   isError: boolean = false;
   error: string;
 
-  constructor(private penerbitService: PenerbitService,
+  constructor(private petugasService: PetugasService,
     private toastr: ToastsManager,
     private vcr: ViewContainerRef,
     public progressService: NgProgressService,
@@ -24,13 +24,13 @@ export class PenerbitInputComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr)
   }
 
-  onInsertNewPenerbit() {
+  onInsertNewPetugas() {
     this.progressService.start();
-    this.penerbitService.saveNewPenerbit(this.newPenerbit).subscribe(output => {
-      this.newPenerbit = new Penerbit();
-      this.router.navigate(["list-penerbit"]);
+    this.petugasService.saveNewPetugas(this.newPetugas).subscribe(output => {
+      this.newPetugas = new Petugas();
+      this.router.navigate(["list-petugas"]);
       this.progressService.done();
-      this.toastr.success('Penerbit Added!', null, { toastLife: 3000 });
+      this.toastr.success('Petugas Added!', null, { toastLife: 3000 });
     }, error => {
       this.toastr.error('{{error}}', null, { toastLife: 3000 });
       this.progressService.done();

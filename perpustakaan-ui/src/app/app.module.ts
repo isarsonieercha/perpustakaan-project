@@ -21,7 +21,6 @@ import { PenerbitService } from "../service/penerbit.service";
 import { PetugasListComponent } from './petugas-list/petugas-list.component';
 import { PetugasInputComponent } from './petugas-input/petugas-input.component';
 import { PinjamListComponent } from './pinjam-list/pinjam-list.component';
-import { PinjamInputComponent } from './pinjam-input/pinjam-input.component';
 
 export const AppRoutes : any =[
   { path: "", component: AppComponent },
@@ -30,8 +29,8 @@ export const AppRoutes : any =[
   { path: "input-anggota", component: AnggotaInputComponent, canActivate: [AuthGuard]},
   { path: "list-buku", component: BukuListComponent, canActivate: [AuthGuard]},
   { path: "input-buku", component: BukuInputComponent, canActivate: [AuthGuard]},
-  { path: "input-penerbit", component: BukuInputComponent, canActivate: [AuthGuard]},
-  { path: "list-buku", component: BukuInputComponent, canActivate: [AuthGuard]},
+  { path: "list-penerbit", component: PenerbitListComponent, canActivate: [AuthGuard]},
+  { path: "input-penerbit", component: PenerbitInputComponent, canActivate: [AuthGuard]},
   { path: "**", redirectTo: '' }
 ];
 
@@ -47,8 +46,7 @@ export const AppRoutes : any =[
     PenerbitInputComponent,
     PetugasListComponent,
     PetugasInputComponent,
-    PinjamListComponent,
-    PinjamInputComponent
+    PinjamListComponent
   ],
   imports: [
     HttpModule,
