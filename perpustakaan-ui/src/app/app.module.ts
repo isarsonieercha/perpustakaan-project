@@ -12,6 +12,12 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AnggotaListComponent } from './anggota-list/anggota-list.component';
 import { AnggotaInputComponent } from './anggota-input/anggota-input.component';
+import { BukuListComponent } from './buku-list/buku-list.component';
+import { BukuInputComponent } from './buku-input/buku-input.component';
+import { PenerbitListComponent } from './penerbit-list/penerbit-list.component';
+import { PenerbitInputComponent } from './penerbit-input/penerbit-input.component';
+import { BukuService } from "../service/buku.service";
+import { PenerbitService } from "../service/penerbit.service";
 
 export const AppRoutes : any =[
   { path: "", component: AppComponent },
@@ -26,7 +32,11 @@ export const AppRoutes : any =[
     AppComponent,
     LoginComponent,
     AnggotaListComponent,
-    AnggotaInputComponent
+    AnggotaInputComponent,
+    BukuListComponent,
+    BukuInputComponent,
+    PenerbitListComponent,
+    PenerbitInputComponent
   ],
   imports: [
     HttpModule,
@@ -37,7 +47,7 @@ export const AppRoutes : any =[
     NgProgressModule,
     RouterModule.forRoot(AppRoutes,{useHash: true})
   ],
-  providers: [AnggotaService, AuthGuard],
+  providers: [AnggotaService, BukuService, PenerbitService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
