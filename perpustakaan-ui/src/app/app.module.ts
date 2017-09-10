@@ -18,6 +18,10 @@ import { PenerbitListComponent } from './penerbit-list/penerbit-list.component';
 import { PenerbitInputComponent } from './penerbit-input/penerbit-input.component';
 import { BukuService } from "../service/buku.service";
 import { PenerbitService } from "../service/penerbit.service";
+import { PetugasListComponent } from './petugas-list/petugas-list.component';
+import { PetugasInputComponent } from './petugas-input/petugas-input.component';
+import { PinjamListComponent } from './pinjam-list/pinjam-list.component';
+import { PinjamInputComponent } from './pinjam-input/pinjam-input.component';
 
 export const AppRoutes : any =[
   { path: "", component: AppComponent },
@@ -36,7 +40,11 @@ export const AppRoutes : any =[
     BukuListComponent,
     BukuInputComponent,
     PenerbitListComponent,
-    PenerbitInputComponent
+    PenerbitInputComponent,
+    PetugasListComponent,
+    PetugasInputComponent,
+    PinjamListComponent,
+    PinjamInputComponent
   ],
   imports: [
     HttpModule,
