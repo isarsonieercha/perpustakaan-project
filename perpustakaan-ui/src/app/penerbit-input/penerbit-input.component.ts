@@ -13,6 +13,7 @@ import { PenerbitService } from "../../service/penerbit.service";
 export class PenerbitInputComponent implements OnInit {
 
   newPenerbit: Penerbit = new Penerbit();
+  penerbits: Penerbit[] = [];
   isError: boolean = false;
   error: string;
 
@@ -27,6 +28,7 @@ export class PenerbitInputComponent implements OnInit {
   onInsertNewPenerbit() {
     this.progressService.start();
     this.penerbitService.saveNewPenerbit(this.newPenerbit).subscribe(output => {
+      console.log(output);
       this.newPenerbit = new Penerbit();
       this.router.navigate(["list-penerbit"]);
       this.progressService.done();

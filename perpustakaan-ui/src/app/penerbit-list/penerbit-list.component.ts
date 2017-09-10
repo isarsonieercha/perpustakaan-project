@@ -9,7 +9,7 @@ import { PenerbitService } from "../../service/penerbit.service";
   styleUrls: ['./penerbit-list.component.css']
 })
 export class PenerbitListComponent {
-  penerbits: Penerbit[] = [];
+  listPenerbit: Penerbit[] = [];
   newPenerbit: Penerbit = new Penerbit();
   error: string;
   isError: boolean = false;
@@ -21,10 +21,9 @@ export class PenerbitListComponent {
   }
 
   loadPenerbitData() {
-    this.penerbitService.findAllPenerbit().subscribe(output => {
+    this.penerbitService.findAllPenerbit().subscribe(output =>{
       console.log(output);
-
-      this.penerbits = output;
+      this.listPenerbit = output;
     }, error => {
       this.isError = error;
     });
@@ -52,23 +51,7 @@ export class PenerbitListComponent {
       console.log(error);
     });
   }
-
-  onInsertNewPenerbit() {
-    if (!this.isEdit) {
-      this.penerbitService.saveNewPenerbit(this.newPenerbit).subscribe(output => {
-        this.penerbits.push(output);
-        this.newPenerbit = new Penerbit();
-        this.insertNew = false;
-      }, error => {
-        this.isError = true;
-        this.error = error;
-        console.log(error);
-      });
-    } else {
-      this.onUpdatePenerbit();
-    }
-  }
-
+  
   onEdit(penerbit){
     this.isEdit=true;
     this.newPenerbit=penerbit;

@@ -12,39 +12,43 @@ export class BukuService{
     }
 
     findAllBuku(){
-        return this
-            .http
-            .get(url)
-            .map(res => res.json())
-            .catch(this.handleError);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
+        let options = new RequestOptions({headers: headers});
+        return this.http.get(url, options).map(res => res.json()).catch(this.handleError);
     }
 
     deleteBuku(id: string){
-        return this
-            .http
-            .delete(url + '/' + id)
-            .map(res => res.json())
-            .catch(this.handleError);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
+        let options = new RequestOptions({headers: headers});
+        return this .http.delete(url + '/' + id, options).map(res => res.json()).catch(this.handleError);
     }
 
     saveNewBuku(buku){
-        let headers = new Headers({'Content-Type':'application/json', 'Cache-Control':'no-cahe'});
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
         let options = new RequestOptions({headers: headers});
-        return this
-            .http
-            .post(url,buku,options)
-            .map(res => res.json())
-            .catch(this.handleError);
+        return this.http.post(url, buku, options).map(res => res.json()).catch(this.handleError);
     }
 
     updateBuku(buku){
-        let headers = new Headers({'Content-Type':'application/json', 'Cache-Control':'no-cahe'});
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache',
+            'Authorization': 'Basic ' + localStorage.getItem('token')
+        });
         let options = new RequestOptions({headers: headers});
-        return this
-            .http
-            .put(url,buku,options)
-            .map(res => res.json())
-            .catch(this.handleError);
+        return this.http.put(url,buku,options).map(res => res.json()).catch(this.handleError);
     }
 
     handleError(error){

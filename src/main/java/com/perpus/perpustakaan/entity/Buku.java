@@ -34,7 +34,7 @@ public class Buku implements Serializable{
     private String pengarang;
     private int jumlah;
     @ManyToOne
-    Penerbit penerbit;
+    private Penerbit penerbit;
     
 
     public Long getId() {
@@ -99,5 +99,19 @@ public class Buku implements Serializable{
      */
     public void setPinjams(List<Pinjam> pinjams) {
         this.pinjams = pinjams;
+    }
+
+    /**
+     * @return the penerbit
+     */
+    public Penerbit getPenerbit() {
+        return penerbit;
+    }
+
+    /**
+     * @param penerbit the penerbit to set
+     */
+    public void setPenerbit(Penerbit penerbit) {
+        this.penerbit = penerbit;
     }
 }

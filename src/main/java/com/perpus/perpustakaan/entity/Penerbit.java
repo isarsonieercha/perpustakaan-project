@@ -29,9 +29,9 @@ public class Penerbit implements Serializable{
     private Long id;
     
     @Column(length = 50, nullable = false)
-    String namaPenerbit;
+    private String namaPenerbit;
     @Column(length = 50, nullable = false, unique = true)
-    String kodePenerbit;
+    private String kodePenerbit;
     
     public Long getId() {
         return id;
@@ -41,18 +41,33 @@ public class Penerbit implements Serializable{
         this.id = id;
     }
 
+
     /**
-     * @return the bukus
+     * @return the namaPenerbit
      */
-    public List<Buku> getBukus() {
-        return bukus;
+    public String getNamaPenerbit() {
+        return namaPenerbit;
     }
 
     /**
-     * @param bukus the bukus to set
+     * @param namaPenerbit the namaPenerbit to set
      */
-    public void setBukus(List<Buku> bukus) {
-        this.bukus = bukus;
+    public void setNamaPenerbit(String namaPenerbit) {
+        this.namaPenerbit = namaPenerbit;
+    }
+
+    /**
+     * @return the kodePenerbit
+     */
+    public String getKodePenerbit() {
+        return kodePenerbit;
+    }
+
+    /**
+     * @param kodePenerbit the kodePenerbit to set
+     */
+    public void setKodePenerbit(String kodePenerbit) {
+        this.kodePenerbit = kodePenerbit;
     }
     
 }
