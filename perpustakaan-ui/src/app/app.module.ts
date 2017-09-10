@@ -26,6 +26,8 @@ export const AppRoutes : any =[
   { path: "input-anggota", component: AnggotaInputComponent, canActivate: [AuthGuard]},
   { path: "list-buku", component: BukuListComponent, canActivate: [AuthGuard]},
   { path: "input-buku", component: BukuInputComponent, canActivate: [AuthGuard]},
+  { path: "input-penerbit", component: BukuInputComponent, canActivate: [AuthGuard]},
+  { path: "list-buku", component: BukuInputComponent, canActivate: [AuthGuard]},
   { path: "**", redirectTo: '' }
 ];
 
